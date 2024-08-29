@@ -26,3 +26,13 @@ body {
     border-bottom: 1px solid #8e3cfa;
     padding-bottom: 30px;
 }
+
+.quiz {
+    padding: 20px 0;
+}
+
+.quiz h2 {
+    font-size: 18;
+    color: #b483f5;
+    font-weight: 600;
+}
