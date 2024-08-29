@@ -18,3 +18,11 @@ body {
     border-bottom-right-radius: 25px;
     padding: 30px;
 }
+
+.app h1 {
+    font-size: 25px;
+    color: #b483f5;
+    font-weight: 600;
+    border-bottom: 1px solid #8e3cfa;
+    padding-bottom: 30px;
+}
