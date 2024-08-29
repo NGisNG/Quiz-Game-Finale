@@ -72,3 +72,11 @@ body {
     cursor: pointer;
     display: none;
 }
+
+.correct {
+    background: #90d4ae;
+}
+
+.incorrect {
+    background: #ecd594;
+}
