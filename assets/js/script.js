@@ -1,4 +1,6 @@
+/*jshint esversion: 6 */
 const questions = [
+    // Array of question objects, each containing a question and its answers
     {
         question: "Which of these colours is NOT featured in the logo for Google?",
         answers: [
@@ -150,86 +152,95 @@ const questions = [
     },
 ];
 
-const questionElement = document.getElementById("question");
-const answerButtons = document.getElementById("answer-buttons");
-const nextButton = document.getElementById("next-btn");
+const questionElement = document.getElementById("question"); // Reference to the question display element
+const answerButtons = document.getElementById("answer-buttons"); // Reference to the container for answer buttons
+const nextButton = document.getElementById("next-btn"); // Reference to the "Next Question" button
 
-let currentQuestionIndex = 0;
-let score = 0;
+let currentQuestionIndex = 0; // Index to track the current question
+let score = 0; // Variable to store the user's score
 
 function startQuiz() {
+    // Initializes the quiz by resetting the question index and score, then shows the first question
     currentQuestionIndex = 0;
     score = 0;
-    nextButton.innerHTML = "Next Question";
+    nextButton.innerHTML = "Next Question"; // Setting the initial text for the next button
     showQuestion();
 }
 
 function showQuestion() {
-    resetState();
-    let currentQuestion = questions[currentQuestionIndex];
-    let questionNo = currentQuestionIndex + 1;
-    questionElement.innerHTML = questionNo + ". " + currentQuestion.question;
+    // Displays the current question and answer buttons
+    resetState(); // Clears previous question's state
+    let currentQuestion = questions[currentQuestionIndex]; // Fetches the current question object
+    let questionNo = currentQuestionIndex + 1; // Adjusts question number for display
+    questionElement.innerHTML = questionNo + ". " + currentQuestion.question; // Displays the question
 
     currentQuestion.answers.forEach(answer => {
+        // Creates a button for each answer
         const button = document.createElement("button");
         button.innerHTML = answer.text;
-        button.classList.add("btn");
+        button.classList.add("btn"); // Adds styling class
         answerButtons.appendChild(button);
         if(answer.correct) {
-            button.dataset.correct = answer.correct;
+            button.dataset.correct = answer.correct; // Marks the correct answer
         }
-        button.addEventListener("click", selectAnswer);
+        button.addEventListener("click", selectAnswer); // Adds click event to handle answer selection
     });
 }
 
-
 function resetState() {
-    nextButton.style.display = "none";
+    // Resets the state of the quiz for the next question
+    nextButton.style.display = "none"; // Hides the next button
     while(answerButtons.firstChild){
+        // Removes previous answer buttons
         answerButtons.removeChild(answerButtons.firstChild);
     }
 }
 
 function selectAnswer(e) {
-    const selectedBtn = e.target;
-    const isCorrect = selectedBtn.dataset.correct === "true";
+    // Handles the selection of an answer
+    const selectedBtn = e.target; // The button that was clicked
+    const isCorrect = selectedBtn.dataset.correct === "true"; // Checks if the selected answer is correct
     if(isCorrect){
-        selectedBtn.classList.add("correct");
-        score++;
+        selectedBtn.classList.add("correct"); // Styles the correct answer
+        score++; // Increments the score if the answer is correct
     } else{
-        selectedBtn.classList.add("incorrect");
+        selectedBtn.classList.add("incorrect"); // Styles the incorrect answer
     }
+    // Highlights the correct answer and disables all buttons
     Array.from(answerButtons.children).forEach(button => {
         if(button.dataset.correct === "true") {
             button.classList.add("correct");
         }
-        button.disabled = true;
-    })
-    nextButton.style.display = "block";
+        button.disabled = true; // Disables the button after selection
+    });
+    nextButton.style.display = "block"; // Shows the next button
 }
 
 function showScore() {
-    resetState();
-    questionElement.innerHTML = `You scored ${score} out of ${questions.length}!`;
-    nextButton.innerHTML = "Play Again";
-    nextButton.style.display = "block";
+    // Displays the final score after the quiz ends
+    resetState(); // Clears the state
+    questionElement.innerHTML = `You scored ${score} out of ${questions.length}!`; // Shows the score
+    nextButton.innerHTML = "Play Again"; // Changes the next button to "Play Again"
+    nextButton.style.display = "block"; // Shows the next button
 }
 
 function handleNextButton() {
-    currentQuestionIndex++;
+    // Handles logic for proceeding to the next question or showing the score
+    currentQuestionIndex++; // Moves to the next question
     if(currentQuestionIndex < questions.length) {
-        showQuestion();
+        showQuestion(); // Shows the next question if available
     } else {
-        showScore();
+        showScore(); // Shows the final score if all questions have been answered
     }
 }
 
 nextButton.addEventListener("click", () => {
+    // Event listener for the next button
     if(currentQuestionIndex < questions.length) {
-        handleNextButton();
+        handleNextButton(); // Proceeds to the next question
     } else{
-        startQuiz();
+        startQuiz(); // Restarts the quiz if it has ended
     }
 });
 
-startQuiz();
+startQuiz(); // Starts the quiz when the script is first run

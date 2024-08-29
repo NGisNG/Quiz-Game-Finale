@@ -1,34 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- The 'lang' attribute specifies the language of the document -->
 
 <head>
     <meta charset="UTF-8">
+    <!-- The 'charset' defines the character encoding for the HTML document -->
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- The 'viewport' meta tag ensures proper scaling on mobile devices -->
 
     <!-- favicon -->
+    <!-- Links to various favicon images for different devices and resolutions -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/wiz_logo/apple-icon-180x180.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/wiz_logo/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/wiz_logo/favicon-16x16.png">
 
+    <!-- Link to the external CSS file for styling the page -->
     <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- The title of the page that appears in the browser tab -->
     <title>Quiz Game</title>
 </head>
 
 <body>
+    <!-- Main container for the application -->
     <div class="app">
+        <!-- Title of the quiz game -->
         <h1>General Knowledge Quiz</h1>
+
+        <!-- Quiz container that holds the question and answer buttons -->
         <div class="quiz">
+            <!-- Placeholder for the quiz question -->
             <h2 id="question">Question goes here</h2>
+
+            <!-- Container for the answer buttons -->
             <div id="answer-buttons">
+                <!-- Answer buttons, will be populated with actual answers via JavaScript -->
                 <button class="btn">Answer 1</button>
                 <button class="btn">Answer 2</button>
                 <button class="btn">Answer 3</button>
                 <button class="btn">Answer 4</button>
             </div>
+
+            <!-- Button to proceed to the next question -->
             <button id="next-btn">Next Question</button>
         </div>
     </div>
 
+    <!-- Link to the external JavaScript file that contains the logic for the quiz -->
     <script src="assets/js/script.js"></script>
 </body>
 
