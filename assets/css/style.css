@@ -4,3 +4,17 @@
     font-family: 'poppins', sans-serif;
     box-sizing: border-box;
 }
+
+body {
+    background: #888888;
+}
+
+.app {
+    background: #eeedee;
+    width: 90%;
+    max-width: 600px;
+    margin: 70px auto 20px;
+    border-top-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    padding: 30px;
+}
