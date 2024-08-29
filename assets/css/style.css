@@ -36,3 +36,17 @@ body {
     color: #b483f5;
     font-weight: 600;
 }
+
+.btn {
+    background: #ebe3f5;
+    color: #222;
+    font-weight: 500;
+    width: 100%;
+    border: 1px solid #8e3cfa;
+    padding: 10px;
+    margin: 10px 0;
+    text-align: center;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
